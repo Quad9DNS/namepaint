@@ -17,15 +17,7 @@ const DEFAULT_DECAY_TIME = 20000;
 const MAX_RANDOM_ROTATION = 60;
 const MIN_RANDOM_ROTATION = -60;
 
-// function listFontFamilies() {
-//   const fontFaces = [...document.fonts.values()];
-//   const families = fontFaces.map(font => font.family);
-//
-//   // converted to set then to array to remove duplicates
-//   return [...new Set(families)];
-// }
-
-const fonts = ['none'];
+var fonts: string[] = ["QuadSans", "Inter", "system-ui", "Avenir", "Helvetica", "Arial", "sans-serif"];
 
 export class WordData {
   name: string;
