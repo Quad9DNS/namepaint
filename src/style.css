@@ -1,0 +1,100 @@
+@font-face {
+  font-family:QuadSans;
+  src:url(/assets/fonts/EOT/QuadSans-Bold.eot);
+  src:url(/assets/fonts/EOT/QuadSans-Bold.eot?#iefix) format("embedded-opentype"),url(/assets/fonts/WOFF2/QuadSans-Bold.woff2) format("woff2"),url(/assets/fonts/WOFF/QuadSans-Bold.woff) format("woff"),
+  url(/assets/fonts/OTF/QuadSans-Bold.otf) format("truetype");
+  font-weight:700;
+  font-style:normal
+}
+@font-face {
+  font-family:QuadSans;
+  src:url(/assets/fonts/EOT/QuadSans-BoldItalic.eot);
+  src:url(/assets/fonts/EOT/QuadSans-BoldItalic.eot?#iefix) format("embedded-opentype"),url(/assets/fonts/WOFF2/QuadSans-BoldItalic.woff2) format("woff2"),url(/assets/fonts/WOFF/QuadSans-BoldItalic.woff) format("woff"),url(/assets/fonts/OTF/QuadSans-BoldItalic.otf) format("truetype");
+  font-weight:700;
+  font-style:italic
+}
+@font-face {
+  font-family:QuadSans;
+  src:url(/assets/fonts/EOT/QuadSans-Book.eot);
+  src:url(/assets/fonts/EOT/QuadSans-Book.eot?#iefix) format("embedded-opentype"),url(/assets/fonts/WOFF2/QuadSans-Book.woff2) format("woff2"),url(/assets/fonts/WOFF/QuadSans-Book.woff) format("woff"),url(/assets/fonts/OTF/QuadSans-Book.otf) format("truetype");
+  font-weight:500;
+  font-style:normal
+}
+@font-face {
+  font-family:QuadSans;
+  src:url(/assets/fonts/EOT/QuadSans-BookItalic.eot);
+  src:url(/assets/fonts/EOT/QuadSans-BookItalic.eot?#iefix) format("embedded-opentype"),url(/assets/fonts/WOFF2/QuadSans-BookItalic.woff2) format("woff2"),url(/assets/fonts/WOFF/QuadSans-BookItalic.woff) format("woff"),url(/assets/fonts/OTF/QuadSans-BookItalic.otf) format("truetype");
+  font-weight:500;
+  font-style:italic
+}
+
+:root {
+  font-family: QuadSans, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.two-col-grid {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+  "field field";
+}
+
+#wsconfigcontainer {
+  grid-template-areas:
+  "field field"
+  "field field"
+  "field field"
+  "footer footer";
+}
+
+.grid-item-2cols {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#visualization {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.word {
+  position: absolute;
+  font-size: 24px;
+  font-family: QuadSans, sans-serif;
+  font-weight: bold;
+  color: white;
+  animation: fade 20s ease-out forwards;
+}
+
+input:invalid {
+  border-color: #ff646c;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
