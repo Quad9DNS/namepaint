@@ -10,6 +10,7 @@ export interface SettingsChangedEvent {
 export class Settings extends EventTarget {
   private readonly eventType = "settings-changed";
   showWebsocketStatus: boolean = false;
+  showDateAndTime: boolean = true;
   itemsPerSecond: number | null = null;
   maxQueuedItems: number | null = null;
 
@@ -22,6 +23,11 @@ export class Settings extends EventTarget {
   setShowWebsocketStatus(newValue: boolean): void {
     this.showWebsocketStatus = newValue;
     this.dispatchChangedEvent("showWebsocketStatus");
+  }
+
+  setShowDateAndTime(newValue: boolean): void {
+    this.showDateAndTime = newValue;
+    this.dispatchChangedEvent("showDateAndTime");
   }
 
   setItemsPerSecond(newValue: number | null): void {

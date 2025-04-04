@@ -15,7 +15,7 @@ export function updateDate(
 
   var format = Intl.DateTimeFormat('default',
     {
-      timeZone: settings.timeZone,
+      timeZone: 'UTC',
       timeZoneName: 'longOffset',
       year: 'numeric',
       month: 'numeric',
