@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Visualization with Queue</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    #visualization {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .word {
+      position: absolute;
+      font-size: 24px;
+      font-family: QuadSans, sans-serif;
+      font-weight: bold;
+      color: white;
+      animation: fade 20s ease-out forwards;
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="visualization"></div>
+
+  <script>
+    const visualization = document.getElementById('visualization');
+    const colors = [
+    'white', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'crimson',
+    'cyan', 'magenta', 'lime', 'gold', 'aqua', 'teal', 'indigo', 'violet', 'coral',
+    'salmon', 'chartreuse', 'turquoise', 'orchid', 'hotpink', 'steelblue', 'goldenrod',
+    'maroon', 'navy', 'darkorange', 'darkgreen', 'darkblue', 'firebrick', 'olive',
+    'deepskyblue', 'tomato', 'lightcoral', 'plum', 'springgreen', 'mediumvioletred',
+    'royalblue', 'darkkhaki', 'mediumorchid', 'sienna', 'lightseagreen', 'dodgerblue',
+    'forestgreen', 'slateblue', 'lawngreen', 'darkslategray', 'mediumaquamarine',
+    'mediumseagreen', 'mediumpurple', 'darkred', 'slategray', 'darkorchid', 'lightpink'
+    ];
+
+    const queue = []; // Queue to hold incoming words
+
+    // Function to create and animate a word
+    function createWord(word) {
+      const wordElement = document.createElement('div');
+      wordElement.className = 'word';
+      wordElement.textContent = word;
+
+      // Random position within the visualization frame
+      const x = Math.random() * visualization.clientWidth;
+      const y = Math.random() * visualization.clientHeight;
+      wordElement.style.left = `${x}px`;
+      wordElement.style.top = `${y}px`;
+
+      // Random rotation (-45 to 45 degrees)
+      const rotation = Math.random() * 90 - 45;
+      wordElement.style.transform = `rotate(${rotation}deg)`;
+
+      // Random color
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      wordElement.style.color = color;
+
+      visualization.appendChild(wordElement);
+
+      // Remove the word after the animation ends (3 seconds)
+      setTimeout(() => {
+        visualization.removeChild(wordElement);
+      }, 20000);
+    }
+
+    // Process the queue at a constant rate
+    function processQueue() {
+      if (queue.length > 0) {
+        const word = queue.shift(); // Get the next word from the queue
+        createWord(word);
+      }
+      setTimeout(processQueue, 20); // Process a word every 20ms
+    }
+
+    // Start processing the queue
+    processQueue();
+
+    // Establish a WebSocket connection
+    const socket = new WebSocket('ws://localhost:1234');
+
+    socket.onmessage = (event) => {
+      const word = event.data.trim(); // Get the word from the WebSocket message
+      queue.push(word); // Add to the queue
+    };
+
+    socket.onopen = () => console.log('WebSocket connected');
+    socket.onerror = (error) => console.error('WebSocket error:', error);
+    socket.onclose = () => console.log('WebSocket disconnected');
+  </script>
+</body>
+</html>
