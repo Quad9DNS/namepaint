@@ -11,8 +11,8 @@ export class Settings extends EventTarget {
   private readonly eventType = "settings-changed";
   showWebsocketStatus: boolean = false;
   showDateAndTime: boolean = true;
-  itemsPerSecond: number | null = null;
-  maxQueuedItems: number | null = null;
+  itemsPerSecond: number = 50;
+  maxQueuedItems: number = 10000;
 
   websocketUrl: string = import.meta.env.VITE_WEBSOCKET_URL || "wss://view.quad9.net/websocket/5003";
   websocketUsername: string = "";
@@ -30,12 +30,12 @@ export class Settings extends EventTarget {
     this.dispatchChangedEvent("showDateAndTime");
   }
 
-  setItemsPerSecond(newValue: number | null): void {
+  setItemsPerSecond(newValue: number): void {
     this.itemsPerSecond = newValue;
     this.dispatchChangedEvent("itemsPerSecond");
   }
 
-  setMaxQueuedItems(newValue: number | null): void {
+  setMaxQueuedItems(newValue: number): void {
     this.maxQueuedItems = newValue;
     this.dispatchChangedEvent("maxQueuedItems");
   }

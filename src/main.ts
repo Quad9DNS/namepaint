@@ -65,7 +65,7 @@ var newWordsQueue: WordData[] = [];
 
 setupPasswordPromptDialog(document.querySelector<HTMLElement>('#password-dialog-container')!);
 setupWebsocket(wsFields, newWordsQueue, settings, settings.autoconnect);
-setupWordsVisualization(container, newWordsQueue);
+setupWordsVisualization(container, newWordsQueue, settings);
 
 declare global {
   interface Window {

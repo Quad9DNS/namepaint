@@ -216,7 +216,11 @@ function connectWebsocket(
       }
     });
     if (incomingEvent) {
-      newWordsQueue.push(new WordData(incomingEvent.name, incomingEvent.font, incomingEvent.size, incomingEvent.color, incomingEvent.stayTime, incomingEvent.decayTime, incomingEvent.rotation));
+      if (newWordsQueue.length < settings.maxQueuedItems) {
+        newWordsQueue.push(new WordData(incomingEvent.name, incomingEvent.font, incomingEvent.size, incomingEvent.color, incomingEvent.stayTime, incomingEvent.decayTime, incomingEvent.rotation));
+      } else {
+        console.log("Ignoring incoming data, because the queue is full.");
+      }
     } else {
       console.log("Incoming data didn't match expected format: " + event.data);
     }

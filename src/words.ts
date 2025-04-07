@@ -1,3 +1,5 @@
+import { Settings } from "./settings";
+
 const colors = [
   'white', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'crimson',
   'cyan', 'magenta', 'lime', 'gold', 'aqua', 'teal', 'indigo', 'violet', 'coral',
@@ -54,8 +56,9 @@ export class WordData {
   *
   * @param container container element for rendering the words into
   * @param newWordsQueue queue with new words data - this one is expected to be updated from the outside, since this component will periodically take new words from it and draw them
+  * @param settings settings container with setting related to visualization and word processing
   */
-export function setupWordsVisualization(container: HTMLElement, newWordsQueue: WordData[]) {
+export function setupWordsVisualization(container: HTMLElement, newWordsQueue: WordData[], settings: Settings) {
   // Function to create and animate a word
   function createWord(word: WordData) {
     const wordElement = document.createElement('div');
@@ -92,7 +95,7 @@ export function setupWordsVisualization(container: HTMLElement, newWordsQueue: W
         createWord(word);
       }
     }
-    setTimeout(processQueue, 20); // Process a word every 20ms
+    setTimeout(processQueue, 1000 / settings.itemsPerSecond); // Process a word every 20ms
   }
 
   // Start processing the newWordsQueue
