@@ -72,6 +72,7 @@ export function setupWordsVisualization(container: HTMLElement, newWordsQueue: W
     wordElement.style.transform = `rotate(${rotation}deg)`;
     wordElement.style.fontFamily = word.font;
     wordElement.style.animationDuration = `${word.decayTime}ms`;
+    wordElement.style.fontSize = `${word.size}px`;
 
     wordElement.style.color = word.color;
 
