@@ -75,6 +75,7 @@ export function setupWordsVisualization(container: HTMLElement, newWordsQueue: W
     wordElement.style.transform = `rotate(${rotation}deg)`;
     wordElement.style.fontFamily = word.font;
     wordElement.style.animationDuration = `${word.decayTime}ms`;
+    wordElement.style.animationDelay = `${word.stayTime}ms`;
     wordElement.style.fontSize = `${word.size}px`;
 
     wordElement.style.color = word.color;
@@ -84,7 +85,7 @@ export function setupWordsVisualization(container: HTMLElement, newWordsQueue: W
     // Remove the word after the animation ends
     setTimeout(() => {
       container.removeChild(wordElement);
-    }, word.decayTime);
+    }, word.decayTime + word.stayTime);
   }
 
   // Process the newWordsQueue at a constant rate
