@@ -149,12 +149,33 @@ function setWebsocketCredentials(
 }
 
 type WsData = {
+  /**
+    * Name to display, exact text
+    */
   name: string,
+  /**
+    * Font to use. Defaults to QuadSans. "random" is a valid value, which will pick one of available fonts randomly.
+    */
   font: string | null,
+  /**
+    * Font size to use. Defaults to 24. "random" is a valid value, which will pick a random font size between 3 and 50.
+    */
   size: number | string | null,
+  /**
+    * Color to use. Default to a random color.
+    */
   color: string | null,
+  /**
+    * Time to display text before starting fade animation. Defaults to 250ms.
+    */
   stayTime: number | null,
+  /**
+    * How long to fade out the text before completely disappearing. Defaults to 20000ms.
+    */
   decayTime: number | null,
+  /**
+    * Text rotation angle. Defaults to a random angle between -60 and 60.
+    */
   rotation: number | null
 };
 
