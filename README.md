@@ -6,6 +6,19 @@ Install dependencies with `npm install`
 To build: `npm run build`
 To run development server: `npm run dev`
 
+## Websocket data
+
+Data that is expected from websocket is defined in [websocket.ts (WsData)](./src/websocket.ts#L151).
+| Key        | Default value    | Description                                                             |
+|------------|------------------|-------------------------------------------------------------------------|
+| name       | - (required)     | Name to display, exact text                                             |
+| font       | QuadSans         | Font to use. "random" is a valid value (picks out of available fonts)   |
+| size       | 24               | Font size. "random" is a valid value, which picks between 3..50         |
+| color      | random           | Color to use. May be a hex string or a HTML color code                  |
+| stayTime   | 250              | Time in milliseconds to display text before starting the fade animation |
+| decayTime  | 20000            | Time in milliseconds for the fade animation to last, before removal     |
+| rotation   | random(-60, 60)  | Text rotation in degrees                                                |
+
 ## Configuration
 
 There are some environment variables which can be used to control the app in build time (when using `npm run build`):
@@ -17,8 +30,8 @@ There are some environment variables which can be used to control the app in bui
 
 Besides environment variables which can be used to control the app in build time, there are also runtime options that can control the app in runtime, which are set as URL query params:
 
-| Variable name                  | Default value                       | Description                                                             |
-|--------------------------------|-------------------------------------|-------------------------------------------------------------------------|
+| Variable name                    | Default value                       | Description                                                                                    |
+|----------------------------------|-------------------------------------|------------------------------------------------------------------------------------------------|
 | showWebsocketStatus              | false                               | Whether to display current websocket status in bottom right corner                             |
 | showDateAndTime                  | true                                | Whether to display current date and time in bottom right corner                                |
 | itemsPerSecond                   | 50                                  | Max number of items to add to display per second. Anything above this will be queued up        |
