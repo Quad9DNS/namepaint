@@ -212,7 +212,7 @@ function connectWebsocket(
     }
     fields.status.hidden = true;
     fields.configurationContainer.style.display = "";
-    setInterval(() => {
+    setTimeout(() => {
       connectWebsocket(fields, newWordsQueue, settings);
     }, settings.websocketAutoreconnectIntervalMs);
   })
