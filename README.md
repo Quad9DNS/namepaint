@@ -22,11 +22,11 @@ Data that is expected from websocket is defined in [websocket.ts (WsData)](./src
 ## Configuration
 
 There are some environment variables which can be used to control the app in build time (when using `npm run build`):
-| Variable name                  | Default value                       | Description                                                             |
-|--------------------------------|-------------------------------------|-------------------------------------------------------------------------|
-| VITE_WEBSOCKET_URL             | wss://view.quad9.net/websocket/5000 | Default websocket URL                                                   |
-| VITE_AUTORECONNECT_INTERVAL_MS | 5000                                | Automatically reconnect to websocket on disconnection in given interval |
-| VITE_RELOAD_INTERVAL_MS        | undefined                           | If defined, page will be reloaded automatically in given interval       |
+| Variable name                  | Default value                       | Description                                                                      |
+|--------------------------------|-------------------------------------|----------------------------------------------------------------------------------|
+| VITE_WEBSOCKET_URL             | wss://view.quad9.net/websocket/5000 | Default websocket URL                                                            |
+| VITE_AUTORECONNECT_INTERVAL_MS | 5000                                | Automatically reconnect to websocket on disconnection in given interval          |
+| VITE_RELOAD_INTERVAL_MS        | undefined                           | If defined, page will be reloaded automatically in given interval                |
 | VITE_APP_INFO_DIALOG_CONTENTS  | Quad9 Newly Observed Domains info   | Text for app info dialog (logo click triggered). Expects HTML formatted content. |
 
 
