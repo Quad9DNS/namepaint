@@ -27,6 +27,8 @@ There are some environment variables which can be used to control the app in bui
 | VITE_WEBSOCKET_URL             | wss://view.quad9.net/websocket/5000 | Default websocket URL                                                   |
 | VITE_AUTORECONNECT_INTERVAL_MS | 5000                                | Automatically reconnect to websocket on disconnection in given interval |
 | VITE_RELOAD_INTERVAL_MS        | undefined                           | If defined, page will be reloaded automatically in given interval       |
+| VITE_APP_INFO_DIALOG_CONTENTS  | Quad9 Newly Observed Domains info   | Text for app info dialog (logo click triggered). Expects HTML formatted content. |
+
 
 Besides environment variables which can be used to control the app in build time, there are also runtime options that can control the app in runtime, which are set as URL query params:
 
@@ -34,6 +36,7 @@ Besides environment variables which can be used to control the app in build time
 |----------------------------------|-------------------------------------|------------------------------------------------------------------------------------------------|
 | showWebsocketStatus              | false                               | Whether to display current websocket status in bottom right corner                             |
 | showDateAndTime                  | true                                | Whether to display current date and time in bottom right corner                                |
+| showLogo                         | true                                | Whether to display Quad9 logo in top right corner                                              |
 | itemsPerSecond                   | 50                                  | Max number of items to add to display per second. Anything above this will be queued up        |
 | maxQueuedItems                   | 10000                               | Max number of items to keep in queue and wait for display. Anything above this will be dropped |
 | websocketUrl                     | VITE_WEBSOCKET_URL                  | Default websocket URL                                                                          |

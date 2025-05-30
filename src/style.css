@@ -49,6 +49,12 @@ body {
   background-color: black;
 }
 
+.dialog-container {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+
 .two-col-grid {
   display: grid;
   gap: 10px;

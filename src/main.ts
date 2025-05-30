@@ -1,4 +1,6 @@
 import { updateDate } from './datetime';
+import { InfoFields, setupInfoDialog } from './info_dialog';
+import Quad9LogoLight from './logo_light.svg?url'
 import { setupPasswordPromptDialog } from './password_prompt';
 import { Settings, SettingsChangedEvent } from './settings';
 import './style.css'
@@ -8,6 +10,9 @@ import { setupWordsVisualization, WordData } from './words';
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; overflow: hidden;">
     <div id="visualization" style="width: 100%; height: 100vh;"></div>
+    <div style="position: absolute; top: 10px; right: 10px; zIndex: 20px; padding: 10px;" class="two-col-grid">
+      <input id="quad9logo" type="image" src="${Quad9LogoLight}" width='200' class="grid-item-2cols" style="background-color: rgba(0, 0, 0, 0.0);" />
+    </div>
     <div style="position: absolute; bottom: 10px; right: 10px; zIndex: 20px; padding: 10px;">
       <p id="datetimedisplay" style="font-size: 0.8em; text-align: end; margin-bottom: 5px; line-height: 1;"></p>
       <p id="wsstatus" style="font-size: 0.8em; text-align: end; margin-bottom: 5px; line-height: 1;" hidden>Websocket server: - </p>
@@ -21,6 +26,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <button id="connectbutton" type="button" style="grid-area: footer;">Connect</button>
       </div>
     </div>
+    <div id="info-dialog-container"></div>
     <div id="password-dialog-container"></div>
   </div>
 `;
@@ -60,6 +66,13 @@ setInterval(() => {
   updateDate(dateTimeDisplay, currentTime, settings);
   updateWebsocketStatus(wsFields, settings);
 }, 1000);
+
+var infoFields: InfoFields = {
+  openInfoButton: document.querySelector<HTMLElement>('#quad9logo')!,
+  dialogContainer: document.querySelector<HTMLElement>('#info-dialog-container')!
+}
+setupInfoDialog(infoFields);
+
 
 var newWordsQueue: WordData[] = [];
 

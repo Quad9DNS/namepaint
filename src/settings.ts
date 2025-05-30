@@ -11,6 +11,7 @@ export class Settings extends EventTarget {
   private readonly eventType = "settings-changed";
   showWebsocketStatus: boolean = false;
   showDateAndTime: boolean = true;
+  showLogo: boolean = true;
   itemsPerSecond: number = 50;
   maxQueuedItems: number = 10000;
 
@@ -28,6 +29,11 @@ export class Settings extends EventTarget {
   setShowDateAndTime(newValue: boolean): void {
     this.showDateAndTime = newValue;
     this.dispatchChangedEvent("showDateAndTime");
+  }
+
+  setShowLogo(newValue: boolean): void {
+    this.showLogo = newValue;
+    this.dispatchChangedEvent("showLogo");
   }
 
   setItemsPerSecond(newValue: number): void {
