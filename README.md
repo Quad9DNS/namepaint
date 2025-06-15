@@ -37,7 +37,7 @@ Besides environment variables which can be used to control the app in build time
 | showWebsocketStatus              | false                               | Whether to display current websocket status in bottom right corner                             |
 | showDateAndTime                  | true                                | Whether to display current date and time in bottom right corner                                |
 | showLogo                         | true                                | Whether to display Quad9 logo in top right corner                                              |
-| itemsPerSecond                   | 50                                  | Max number of items to add to display per second. Anything above this will be queued up        |
+| itemsPerSecond                   | 4                                   | Max number of items to add to display per second. Anything above this will be queued up        |
 | maxQueuedItems                   | 10000                               | Max number of items to keep in queue and wait for display. Anything above this will be dropped |
 | websocketUrl                     | VITE_WEBSOCKET_URL                  | Default websocket URL                                                                          |
 | websocketUsername                |                                     | Username to prepopulate for websocket connection                                               |
