@@ -12,7 +12,7 @@ export class Settings extends EventTarget {
   showWebsocketStatus: boolean = false;
   showDateAndTime: boolean = true;
   showLogo: boolean = true;
-  itemsPerSecond: number = 50;
+  itemsPerSecond: number = 4;
   maxQueuedItems: number = 10000;
 
   websocketUrl: string = import.meta.env.VITE_WEBSOCKET_URL || "wss://view.quad9.net/websocket/5003";
