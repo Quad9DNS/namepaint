@@ -41,7 +41,7 @@ export function setupInfoDialog(
 const INFO_DIALOG_CONTENTS = import.meta.env.VITE_APP_INFO_DIALOG_CONTENTS || `
 <h2>Quad9 Newly Observed Domains</h2>
 <p>
-This is a stream of some (but not all) of the newly observed domains that are seen on the Quad9 array of systems. Note that a domain appearing here does not mean it has just been registered (though that is often the case.) This simply means this is the first time it has been seen on the Quad9 platform. A "domain" is a portion of a name that appears in the ICANN section of the Public Suffix List (PSL.) There may be duplicates shown within a few seconds of each other - this is a bug we're working on, but only happens very sporadically.
+This is a realtime sample stream of some of the newly observed domains that are seen on the Quad9 array of DNS servers. The full set is significantly larger. Note that a domain appearing here does not mean it has just been registered (though that is often the case.) This simply means this is the first time it has been seen on the Quad9 platform. A "domain" is a portion of a name that appears in the ICANN section of the Public Suffix List (PSL.) 
 <p>
 Questions? Send to <a href="mailto:jtodd@quad9.net">jtodd@quad9.net</a>
 </p>
