@@ -18,6 +18,7 @@ Data that is expected from websocket is defined in [websocket.ts (WsData)](./src
 | stayTime   | 250              | Time in milliseconds to display text before starting the fade animation |
 | decayTime  | 20000            | Time in milliseconds for the fade animation to last, before removal     |
 | rotation   | random(-60, 60)  | Text rotation in degrees                                                |
+| depth      | 0/random(0, 255) | Depth to draw the word at. 0 is the default isfshuffleDepth is disabled |
 
 ## Configuration
 
@@ -44,3 +45,4 @@ Besides environment variables which can be used to control the app in build time
 | websoscketPassword               |                                     | Password to prepopulate for websocket connection                                               |
 | websocketAutoreconnectIntervalMs | VITE_AUTORECONNECT_INTERVAL_MS      | Automatically reconnect to websocket on disconnection in given interval                        |
 | autoconnnect                     | false                               | Automatically connect to websocket on page laod. Prompts for password if not provided          |
+| shuffleDepth                     | false                               | Whether depth the words are drawn at should be randomized if not explicitly defined            |

@@ -29,8 +29,9 @@ export class WordData {
   stayTime: number;
   decayTime: number;
   rotation: number;
+  depth: number | null;
 
-  constructor(name: string, font: string | null, size: number | string | null, color: string | null, stayTime: number | null, decayTime: number | null, rotation: number | null) {
+  constructor(name: string, font: string | null, size: number | string | null, color: string | null, stayTime: number | null, decayTime: number | null, rotation: number | null, depth: number | null) {
     this.name = name;
     if (font == "random") {
       this.font = fonts[Math.floor(Math.random() * fonts.length)];
@@ -48,6 +49,7 @@ export class WordData {
     this.stayTime = stayTime ?? DEFAULT_STAY_TIME;
     this.decayTime = decayTime ?? DEFAULT_DECAY_TIME;
     this.rotation = rotation ?? Math.random() * (MAX_RANDOM_ROTATION - MIN_RANDOM_ROTATION) + MIN_RANDOM_ROTATION;
+    this.depth = depth;
   }
 }
 
@@ -79,6 +81,11 @@ export function setupWordsVisualization(container: HTMLElement, newWordsQueue: W
     wordElement.style.fontSize = `${word.size}px`;
 
     wordElement.style.color = word.color;
+
+    const depth = Math.abs(word.depth ?? (settings.shuffleDepth ? Math.random() * 255 : 0));
+    if (settings.shuffleDepth) {
+      wordElement.style.zIndex = (-depth).toFixed(0);
+    }
 
     container.appendChild(wordElement);
 
