@@ -15,6 +15,8 @@ export class Settings extends EventTarget {
   itemsPerSecond: number = 4;
   maxQueuedItems: number = 10000;
 
+  shuffleDepth: boolean = false;
+
   websocketUrl: string = import.meta.env.VITE_WEBSOCKET_URL || "wss://view.quad9.net/websocket/5003";
   websocketUsername: string = "";
   websocketPassword: string = "";
@@ -34,6 +36,11 @@ export class Settings extends EventTarget {
   setShowLogo(newValue: boolean): void {
     this.showLogo = newValue;
     this.dispatchChangedEvent("showLogo");
+  }
+
+  setShuffleDepth(newValue: boolean): void {
+    this.shuffleDepth = newValue;
+    this.dispatchChangedEvent("shuffleDepth");
   }
 
   setItemsPerSecond(newValue: number): void {

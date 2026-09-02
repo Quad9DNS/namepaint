@@ -177,6 +177,10 @@ type WsData = {
     * Text rotation angle. Defaults to a random angle between -60 and 60.
     */
   rotation: number | null
+  /**
+    * Text depth. Defaults to a random depth if depth shuffle is enabled.
+    */
+  depth: number | null
 };
 
 function connectWebsocket(
@@ -238,7 +242,7 @@ function connectWebsocket(
     });
     if (incomingEvent) {
       if (newWordsQueue.length < settings.maxQueuedItems) {
-        newWordsQueue.push(new WordData(incomingEvent.name, incomingEvent.font, incomingEvent.size, incomingEvent.color, incomingEvent.stayTime, incomingEvent.decayTime, incomingEvent.rotation));
+        newWordsQueue.push(new WordData(incomingEvent.name, incomingEvent.font, incomingEvent.size, incomingEvent.color, incomingEvent.stayTime, incomingEvent.decayTime, incomingEvent.rotation, incomingEvent.depth));
       } else {
         console.log("Ignoring incoming data, because the queue is full.");
       }
